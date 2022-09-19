@@ -2,9 +2,8 @@
 
 pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-contract Box {
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+contract Box is OwnableUpgradeable {
     uint256 private _value;
 
     event ValueChanged(uint256 value);
@@ -15,7 +14,7 @@ contract Box {
         emit ValueChanged(value);
     }
 
-    function retrive() public view returns(uint256){
+    function retrive() public onlyOwner view returns(uint256){
         return _value;
     }
 }

@@ -16,6 +16,7 @@ contract Box is OwnableUpgradeable {
     function initialize(uint256 value) public initializer {
         _value = value;
         testval = 52;
+        // ownableを初期化できる (これがないとownerが0x00000...になった)
         __Ownable_init_unchained();
     }
 
@@ -27,6 +28,8 @@ contract Box is OwnableUpgradeable {
     function retrive() public view returns(uint256){
         console.log("--==--");
         console.log("success upgrade -==-===");
+        console.log(msg.sender);
+        console.log(owner());
         console.log("--==--");
         return _value;
     }

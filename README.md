@@ -24,3 +24,19 @@ npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
 ```
 npx hardhat run --network localhost scripts/upgrade_upgradeable_box.js
 ```
+
+## コンソール
+### 起動
+```
+npx hardhat console --network localhost
+```
+
+### デプロイ済みのコントラクトに接続
+
+```
+const Contract = await ethers.getContractFactory("Box");
+
+const contract = await Contract.attach([コントラクトのアドレス])
+
+// contract.関数で、コントラクトの関数を実行できる
+```
